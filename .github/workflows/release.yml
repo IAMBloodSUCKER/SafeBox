@@ -39,6 +39,10 @@ jobs:
       - name: Build and test
         run: mvn -B -Pwindows clean test package javafx:jlink
 
+      - name: Prepare Windows icon
+        shell: pwsh
+        run: ./scripts/png-to-ico.ps1
+
       - name: Create Windows installer
         shell: bash
         run: |
@@ -49,7 +53,7 @@ jobs:
             --main-jar ${{ steps.version.outputs.jar }} \
             --main-class com.safebox.MainApp \
             --runtime-image target/safebox-runtime \
-            --icon src/main/resources/images/icon.png \
+            --icon src/main/resources/images/icon.ico \
             --app-version ${{ steps.version.outputs.version }} \
             --description "Local password manager" \
             --vendor SafeBox \
