@@ -25,36 +25,36 @@ jobs:
 
       - name: Resolve version
         id: version
-        shell: pwsh
+        shell: bash
         run: |
-          $tagVersion = "${{ github.ref_name }}".TrimStart('v')
-          $pomVersion = (mvn help:evaluate -Dexpression=project.version -q -DforceStdout).Trim()
-          if ($tagVersion -ne $pomVersion) {
-            Write-Error "Tag v$tagVersion does not match pom.xml version $pomVersion. Bump <version> in pom.xml before tagging."
+          VERSION="${GITHUB_REF_NAME#v}"
+          POM_VERSION="$(mvn -B -q -DforceStdout help:evaluate -Dexpression=project.version)"
+          if [ "$VERSION" != "$POM_VERSION" ]; then
+            echo "Tag v$VERSION does not match pom.xml version $POM_VERSION"
             exit 1
-          }
-          "version=$tagVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          "jar=safebox-$tagVersion.jar" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "jar=safebox-$VERSION.jar" >> "$GITHUB_OUTPUT"
 
       - name: Build and test
-        run: mvn -B clean test package javafx:jlink
+        run: mvn -B -Pwindows clean test package javafx:jlink
 
       - name: Create Windows installer
-        shell: pwsh
+        shell: bash
         run: |
-          jpackage `
-            --type exe `
-            --name SafeBox `
-            --input target `
-            --main-jar ${{ steps.version.outputs.jar }} `
-            --main-class com.safebox.MainApp `
-            --runtime-image target/safebox-runtime `
-            --icon src/main/resources/images/icon.png `
-            --app-version ${{ steps.version.outputs.version }} `
-            --description "Local password manager" `
-            --vendor SafeBox `
-            --dest dist `
-            --win-menu `
+          jpackage \
+            --type exe \
+            --name SafeBox \
+            --input target \
+            --main-jar ${{ steps.version.outputs.jar }} \
+            --main-class com.safebox.MainApp \
+            --runtime-image target/safebox-runtime \
+            --icon src/main/resources/images/icon.png \
+            --app-version ${{ steps.version.outputs.version }} \
+            --description "Local password manager" \
+            --vendor SafeBox \
+            --dest dist \
+            --win-menu \
             --win-shortcut
 
       - name: Upload release assets
