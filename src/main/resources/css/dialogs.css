@@ -1,0 +1,83 @@
+.dialog-root {
+    -fx-background-color: transparent;
+    -fx-background-radius: 28;
+    -fx-border-radius: 28;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.18), 24, 0.3, 0, 10);
+}
+
+.dialog-header {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 28 28 0 0;
+}
+
+.dialog-icon {
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+    -fx-min-width: 36px;
+    -fx-alignment: center;
+}
+
+.dialog-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.dialog-header-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+}
+
+.dialog-body {
+    -fx-background-radius: 0 0 28 28;
+}
+
+.dialog-message {
+    -fx-font-size: 14px;
+    -fx-line-spacing: 2px;
+}
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.dialog-button-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-padding: 8 20;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.dialog-button-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.dialog-button-secondary {
+    -fx-background-radius: 20;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.dialog-root.warning .dialog-header {
+    -fx-background-color: #d97706;
+}
+
+.dialog-root.error .dialog-header {
+    -fx-background-color: #dc2626;
+}
+
+.dialog-copy-field {
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 12px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.dialog-details-area {
+    -fx-font-size: 13px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}

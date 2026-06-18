@@ -1,0 +1,14 @@
+target/
+.idea/
+.tools/
+dist/
+*.iml
+.classpath
+.project
+.settings/
+*.db
+salt.bin
+.safebox/
+.DS_Store
+Thumbs.db
+*.log

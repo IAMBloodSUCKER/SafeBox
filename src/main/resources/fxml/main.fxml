@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.safebox.controller.MainController"
+      styleClass="window-root">
+    <HBox fx:id="titleBar" styleClass="title-bar" spacing="0">
+        <Label fx:id="appNameLabel" styleClass="title-bar-text"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="minimizeButton" text="&#8722;" styleClass="window-button"/>
+        <Button fx:id="closeButton" text="&#10005;" styleClass="window-button window-close"/>
+    </HBox>
+
+    <StackPane styleClass="root-pane" VBox.vgrow="ALWAYS">
+        <BorderPane>
+        <top>
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="12" right="16" bottom="8" left="16"/>
+                </padding>
+                <HBox spacing="12" alignment="CENTER_RIGHT">
+                    <Button fx:id="exportButton" onAction="#onExport"/>
+                    <Button fx:id="importButton" onAction="#onImport"/>
+                    <Button fx:id="languageButton"/>
+                    <Button fx:id="themeButton" onAction="#onToggleTheme"/>
+                    <Button fx:id="lockButton" onAction="#onLock"/>
+                    <Button fx:id="changePasswordButton" onAction="#onChangePassword"/>
+                </HBox>
+                <TextField fx:id="searchField"/>
+                <HBox styleClass="support-bar" spacing="10" alignment="CENTER_LEFT">
+                    <Label fx:id="supportLabel" styleClass="support-label"/>
+                    <Label fx:id="authorLabel" styleClass="support-author"/>
+                    <Label fx:id="walletAddressLabel" styleClass="support-address copyable"
+                           wrapText="true" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                           onMouseClicked="#onCopyWallet"/>
+                    <Button fx:id="copyWalletButton" onAction="#onCopyWallet" styleClass="support-button"/>
+                    <Button fx:id="supportInfoButton" onAction="#onSupportInfo" styleClass="support-button"/>
+                </HBox>
+            </VBox>
+        </top>
+
+        <center>
+            <VBox spacing="0">
+                <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="siteColumn"/>
+                        <TableColumn fx:id="loginColumn"/>
+                        <TableColumn fx:id="updatedColumn"/>
+                    </columns>
+                    <placeholder>
+                        <Label fx:id="emptyLabel"/>
+                    </placeholder>
+                </TableView>
+
+                <VBox fx:id="detailPanel" styleClass="entry-detail" visible="false" managed="false" spacing="6">
+                    <padding>
+                        <Insets top="12" right="16" bottom="14" left="16"/>
+                    </padding>
+                    <Label fx:id="detailHintLabel" styleClass="detail-hint"/>
+                    <HBox spacing="10" alignment="TOP_LEFT">
+                        <Label fx:id="detailSiteLabel" styleClass="detail-label" minWidth="72"/>
+                        <Label fx:id="detailSiteValue" styleClass="detail-value copyable" wrapText="true"
+                               maxWidth="Infinity" onMouseClicked="#onCopySite" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10" alignment="TOP_LEFT">
+                        <Label fx:id="detailLoginLabel" styleClass="detail-label" minWidth="72"/>
+                        <Label fx:id="detailLoginValue" styleClass="detail-value copyable" wrapText="true"
+                               maxWidth="Infinity" onMouseClicked="#onCopyLogin" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="detailPasswordLabel" styleClass="detail-label" minWidth="72"/>
+                        <Label fx:id="detailPasswordValue" styleClass="detail-value copyable"
+                               onMouseClicked="#onCopyPassword" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="toggleDetailPasswordButton" onAction="#onToggleDetailPassword"
+                                styleClass="detail-toggle-button"/>
+                    </HBox>
+                    <HBox spacing="10" alignment="TOP_LEFT">
+                        <Label fx:id="detailNotesLabel" styleClass="detail-label" minWidth="72"/>
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label fx:id="detailNotesPreview" styleClass="detail-notes" wrapText="true" maxWidth="Infinity"/>
+                            <ScrollPane fx:id="detailNotesScroll" styleClass="detail-notes-scroll"
+                                        fitToWidth="true" maxHeight="100" visible="false" managed="false">
+                                <Label fx:id="detailNotesFull" styleClass="detail-notes" wrapText="true" maxWidth="Infinity"/>
+                            </ScrollPane>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <Button fx:id="toggleNotesButton" onAction="#onToggleNotes"
+                                        styleClass="detail-toggle-button" visible="false" managed="false"/>
+                                <Button fx:id="copyNotesButton" onAction="#onCopyNotes"
+                                        styleClass="detail-toggle-button" visible="false" managed="false"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </center>
+
+        <bottom>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="8" right="16" bottom="16" left="16"/>
+                </padding>
+                <Button fx:id="addButton" onAction="#onAdd"/>
+                <Button fx:id="editButton" onAction="#onEdit"/>
+                <Button fx:id="deleteButton" onAction="#onDelete"/>
+                <Button fx:id="bulkDeleteButton" onAction="#onBulkDelete"/>
+                <Button fx:id="generateButton" onAction="#onGenerate"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+            </HBox>
+        </bottom>
+        </BorderPane>
+
+        <HBox alignment="CENTER" StackPane.alignment="BOTTOM_CENTER" mouseTransparent="true" pickOnBounds="false">
+            <padding>
+                <Insets bottom="72"/>
+            </padding>
+            <Label fx:id="toastLabel" styleClass="toast" visible="false" managed="false" mouseTransparent="true"/>
+        </HBox>
+    </StackPane>
+</VBox>

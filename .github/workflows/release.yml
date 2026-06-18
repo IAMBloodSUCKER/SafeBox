@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Resolve version
+        id: version
+        shell: pwsh
+        run: |
+          $tagVersion = "${{ github.ref_name }}".TrimStart('v')
+          $pomVersion = (mvn help:evaluate -Dexpression=project.version -q -DforceStdout).Trim()
+          if ($tagVersion -ne $pomVersion) {
+            Write-Error "Tag v$tagVersion does not match pom.xml version $pomVersion. Bump <version> in pom.xml before tagging."
+            exit 1
+          }
+          "version=$tagVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "jar=safebox-$tagVersion.jar" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Build and test
+        run: mvn -B clean test package javafx:jlink
+
+      - name: Create Windows installer
+        shell: pwsh
+        run: |
+          jpackage `
+            --type exe `
+            --name SafeBox `
+            --input target `
+            --main-jar ${{ steps.version.outputs.jar }} `
+            --main-class com.safebox.MainApp `
+            --runtime-image target/safebox-runtime `
+            --icon src/main/resources/images/icon.png `
+            --app-version ${{ steps.version.outputs.version }} `
+            --description "Local password manager" `
+            --vendor SafeBox `
+            --dest dist `
+            --win-menu `
+            --win-shortcut
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*
+            target/${{ steps.version.outputs.jar }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

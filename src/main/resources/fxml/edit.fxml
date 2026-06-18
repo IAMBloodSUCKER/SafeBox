@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.safebox.controller.EditController"
+          hgap="12" vgap="12"
+          styleClass="root-pane">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints minWidth="100" prefWidth="120"/>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="280"/>
+    </columnConstraints>
+
+    <Label fx:id="siteLabel" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="siteField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label fx:id="loginLabel" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="loginField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label fx:id="passwordLabel" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1">
+        <PasswordField fx:id="passwordField" HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="passwordVisibleField" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="togglePasswordButton" onAction="#onTogglePassword"/>
+        <Button fx:id="generateButton" onAction="#onGenerate"/>
+    </HBox>
+
+    <Label fx:id="notesLabel" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.valignment="TOP"/>
+    <TextArea fx:id="notesArea" prefRowCount="4" wrapText="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT" GridPane.rowIndex="4" GridPane.columnIndex="1">
+        <Button fx:id="saveButton" onAction="#onSave" defaultButton="true"/>
+        <Button fx:id="cancelButton" onAction="#onCancel" cancelButton="true"/>
+    </HBox>
+</GridPane>

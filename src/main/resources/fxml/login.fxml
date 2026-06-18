@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.safebox.controller.LoginController"
+      styleClass="window-root">
+    <HBox fx:id="titleBar" styleClass="title-bar" spacing="0">
+        <Label fx:id="appNameLabel" styleClass="title-bar-text"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="minimizeButton" text="&#8722;" styleClass="window-button"/>
+        <Button fx:id="closeButton" text="&#10005;" styleClass="window-button window-close"/>
+    </HBox>
+
+    <VBox alignment="CENTER" spacing="16" styleClass="root-pane" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="24" right="32" bottom="32" left="32"/>
+        </padding>
+
+        <HBox alignment="CENTER_RIGHT" maxWidth="320">
+            <Button fx:id="languageButton"/>
+        </HBox>
+
+        <Label fx:id="titleLabel" styleClass="title-label"/>
+        <Label fx:id="subtitleLabel" styleClass="subtitle-label" wrapText="true"/>
+
+        <VBox spacing="8" maxWidth="320">
+            <Label fx:id="masterPasswordLabel"/>
+            <PasswordField fx:id="masterPasswordField"/>
+            <TextField fx:id="masterPasswordVisibleField" visible="false" managed="false"/>
+
+            <VBox fx:id="setupBox" spacing="8">
+                <Label fx:id="confirmPasswordLabel"/>
+                <PasswordField fx:id="confirmPasswordField"/>
+                <TextField fx:id="confirmPasswordVisibleField" visible="false" managed="false"/>
+            </VBox>
+        </VBox>
+
+        <Button fx:id="loginButton" onAction="#onLogin" defaultButton="true" maxWidth="320"/>
+        <Hyperlink fx:id="forgotPasswordLink" onAction="#onForgotPassword"/>
+
+        <VBox alignment="CENTER" spacing="6" styleClass="support-compact" maxWidth="360">
+            <HBox spacing="8" alignment="CENTER">
+                <Label fx:id="supportLoginLabel" styleClass="support-label"/>
+                <Label fx:id="authorLoginLabel" styleClass="support-author"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER">
+                <Label fx:id="walletLoginLabel" styleClass="support-address copyable" wrapText="true"
+                       onMouseClicked="#onCopyWallet"/>
+                <Button fx:id="copyWalletLoginButton" onAction="#onCopyWallet" styleClass="support-button"/>
+                <Hyperlink fx:id="supportDetailsLink" onAction="#onSupportInfo"/>
+            </HBox>
+        </VBox>
+        <Label fx:id="versionLabel" styleClass="version-label"/>
+    </VBox>
+</VBox>

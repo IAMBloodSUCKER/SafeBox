@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.safebox.controller.GeneratorController"
+      spacing="12"
+      styleClass="root-pane">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label fx:id="lengthLabel"/>
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Slider fx:id="lengthSlider" min="8" max="64" value="16" showTickLabels="true" showTickMarks="true"
+                majorTickUnit="8" minorTickCount="3" HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="lengthField" text="16" prefWidth="60"/>
+    </HBox>
+
+    <GridPane hgap="12" vgap="8">
+        <CheckBox fx:id="upperCheck" selected="true" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="lowerCheck" selected="true" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <CheckBox fx:id="digitsCheck" selected="true" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="specialCheck" selected="true" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <TextField fx:id="resultField" editable="false"/>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="generateButton" onAction="#onGenerate"/>
+        <Button fx:id="copyButton" onAction="#onCopy"/>
+        <Button fx:id="useButton" onAction="#onUse" defaultButton="true"/>
+        <Button fx:id="closeButton" onAction="#onClose" cancelButton="true"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,312 @@
+.root-pane {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #0f172a;
+}
+
+.window-root {
+    -fx-background-color: #0f172a;
+}
+
+.title-bar {
+    -fx-background-color: #1e293b;
+    -fx-padding: 6 4 6 12;
+    -fx-alignment: center-left;
+}
+
+.title-bar-text {
+    -fx-font-weight: bold;
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 13px;
+}
+
+.title-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f8fafc;
+}
+
+.subtitle-label {
+    -fx-text-fill: #94a3b8;
+}
+
+.status-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.version-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+
+.label {
+    -fx-text-fill: #e2e8f0;
+}
+
+.button, .root-pane .button {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover, .root-pane .button:hover {
+    -fx-background-color: #2563eb;
+}
+
+.title-bar .window-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e2e8f0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-min-width: 46px;
+    -fx-max-width: 46px;
+    -fx-min-height: 32px;
+    -fx-max-height: 32px;
+    -fx-cursor: hand;
+}
+
+.title-bar .window-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.title-bar .window-button.window-close:hover {
+    -fx-background-color: #e81123;
+    -fx-text-fill: white;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f8fafc;
+    -fx-prompt-text-fill: #64748b;
+    -fx-border-color: #334155;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.text-area {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f8fafc;
+    -fx-prompt-text-fill: #64748b;
+    -fx-control-inner-background: #1e293b;
+    -fx-highlight-fill: #3b82f6;
+    -fx-highlight-text-fill: #f8fafc;
+    -fx-border-color: #334155;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.text-area .content {
+    -fx-background-color: #1e293b;
+}
+
+.table-view {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #334155;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: #334155;
+}
+
+.table-view .column-header {
+    -fx-background-color: #334155;
+    -fx-border-color: #64748b;
+    -fx-border-width: 0 1 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #f8fafc;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #f1f5f9;
+    -fx-border-color: #475569;
+    -fx-border-width: 0 1 0 0;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f1f5f9;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #172033;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #2563eb;
+}
+
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.hyperlink {
+    -fx-text-fill: #60a5fa;
+}
+
+.check-box {
+    -fx-text-fill: #e2e8f0;
+}
+
+.dialog-body {
+    -fx-background-color: #1e293b;
+}
+
+.dialog-message {
+    -fx-text-fill: #e2e8f0;
+}
+
+.field-label {
+    -fx-text-fill: #cbd5e1;
+}
+
+.dialog-button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #475569;
+}
+
+.dialog-button-secondary:hover {
+    -fx-background-color: #334155;
+}
+
+.dialog-copy-field {
+    -fx-background-color: #0f172a;
+    -fx-control-inner-background: #0f172a;
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #475569;
+}
+
+.dialog-details-area {
+    -fx-control-inner-background: #0f172a;
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #475569;
+}
+
+.dialog-details-area .content {
+    -fx-background-color: #0f172a;
+}
+
+.entry-detail {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-border-width: 1 0 0 0;
+}
+
+.detail-hint {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.detail-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.detail-value {
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 14px;
+}
+
+.detail-value.copyable:hover {
+    -fx-text-fill: #60a5fa;
+}
+
+.detail-notes {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+}
+
+.detail-notes-scroll {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+}
+
+.detail-notes-scroll > .viewport {
+    -fx-background-color: #0f172a;
+}
+
+.entry-detail .detail-toggle-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #60a5fa;
+    -fx-border-color: #475569;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 4 12;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.entry-detail .detail-toggle-button:hover {
+    -fx-background-color: #334155;
+}
+
+.toast {
+    -fx-background-color: rgba(30, 41, 59, 0.95);
+    -fx-text-fill: #f8fafc;
+    -fx-padding: 10 18;
+    -fx-background-radius: 24;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0.2, 0, 4);
+}
+
+.support-bar {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 12;
+    -fx-padding: 10 12;
+}
+
+.support-compact {
+    -fx-padding: 8 0 0 0;
+}
+
+.support-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.support-author {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
+}
+
+.support-address {
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 11px;
+    -fx-text-fill: #93c5fd;
+    -fx-cursor: hand;
+}
+
+.support-address.copyable:hover {
+    -fx-text-fill: #60a5fa;
+    -fx-underline: true;
+}
+
+.root-pane .support-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #60a5fa;
+    -fx-border-color: #475569;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 4 12;
+    -fx-font-size: 12px;
+}
+
+.root-pane .support-button:hover {
+    -fx-background-color: #334155;
+}
