@@ -1,6 +1,6 @@
 # SafeBox
 
-[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/IAMBloodSUCKER/SafeBox/releases)
+[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/IAMBloodSUCKER/SafeBox/releases)
 
 **SafeBox** — минималистичное десктопное приложение для безопасного локального хранения паролей. Без облаков, без серверов, один мастер-пароль.
 

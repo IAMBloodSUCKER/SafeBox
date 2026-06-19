@@ -23,10 +23,6 @@ public class ChangePasswordDialogController {
     @FXML
     private Label messageLabel;
     @FXML
-    private Label currentLabel;
-    @FXML
-    private PasswordField currentField;
-    @FXML
     private Label newLabel;
     @FXML
     private PasswordField newField;
@@ -39,7 +35,6 @@ public class ChangePasswordDialogController {
     @FXML
     private Button confirmButton;
 
-    private char[] currentPassword;
     private char[] newPassword;
     private boolean submitted;
 
@@ -51,7 +46,6 @@ public class ChangePasswordDialogController {
         titleLabel.setText(I18n.get("changePassword.title"));
         headerLabel.setText(I18n.get("changePassword.header"));
         messageLabel.setText(I18n.get("changePassword.message"));
-        currentLabel.setText(I18n.get("changePassword.current"));
         newLabel.setText(I18n.get("changePassword.new"));
         confirmLabel.setText(I18n.get("changePassword.confirm"));
         cancelButton.setText(I18n.get("btn.cancel"));
@@ -60,22 +54,20 @@ public class ChangePasswordDialogController {
 
     @FXML
     private void onConfirm() {
-        char[] current = currentField.getText().toCharArray();
         char[] newPwd = newField.getText().toCharArray();
         char[] confirm = confirmField.getText().toCharArray();
 
         if (newPwd.length == 0) {
             messageLabel.setText(I18n.get("error.vault.masterPasswordEmpty"));
-            wipe(current, newPwd, confirm);
+            wipe(newPwd, confirm);
             return;
         }
         if (!Arrays.equals(newPwd, confirm)) {
             messageLabel.setText(I18n.get("error.passwords.mismatch"));
-            wipe(current, newPwd, confirm);
+            wipe(newPwd, confirm);
             return;
         }
 
-        currentPassword = current;
         newPassword = newPwd;
         wipe(confirm);
         submitted = true;
@@ -92,13 +84,6 @@ public class ChangePasswordDialogController {
      */
     public boolean isSubmitted() {
         return submitted;
-    }
-
-    /**
-     * Returns the current master password entered by the user.
-     */
-    public char[] getCurrentPassword() {
-        return currentPassword;
     }
 
     /**

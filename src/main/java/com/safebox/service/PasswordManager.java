@@ -220,22 +220,18 @@ public class PasswordManager {
 
     /**
      * Changes the master password and re-encrypts all stored entries.
+     * Requires an active unlocked session ({@code currentKey}).
      *
-     * @param currentPassword current master password for verification
-     * @param newPassword     new master password (any non-empty length)
-     * @param currentKey      active session encryption key
+     * @param newPassword new master password (any non-empty length)
+     * @param currentKey  active session encryption key
      * @return new session encryption key
      */
-    public SecretKey changeMasterPassword(char[] currentPassword, char[] newPassword, SecretKey currentKey) {
-        validateMasterPassword(currentPassword);
+    public SecretKey changeMasterPassword(char[] newPassword, SecretKey currentKey) {
+        if (currentKey == null) {
+            throw new VaultException(I18n.get("error.session.locked"));
+        }
         validateMasterPassword(newPassword);
         try {
-            byte[] salt = Files.readAllBytes(AppPaths.saltFile());
-            String verifier = passwordRepository.loadMasterVerifier();
-            if (!cryptoService.verifyPassword(currentPassword, salt, verifier)) {
-                throw new VaultException(I18n.get("error.vault.invalidPassword"));
-            }
-
             List<PasswordEntry> entries = passwordRepository.findAll(currentKey, "");
             byte[] newSalt = cryptoService.generateSalt();
             SecretKey newKey = cryptoService.deriveKey(newPassword, newSalt);

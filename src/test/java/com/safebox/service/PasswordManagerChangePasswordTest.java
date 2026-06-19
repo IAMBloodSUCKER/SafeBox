@@ -46,10 +46,9 @@ class PasswordManagerChangePasswordTest {
 
     @Test
     void changeMasterPassword_reencryptsEntries() {
-        char[] current = "old-password".toCharArray();
         char[] updated = "x".toCharArray();
 
-        SecretKey newKey = passwordManager.changeMasterPassword(current, updated, key);
+        SecretKey newKey = passwordManager.changeMasterPassword(updated, key);
 
         List<PasswordEntry> withNew = passwordManager.listEntries(newKey, "");
         assertEquals(1, withNew.size());
@@ -59,20 +58,17 @@ class PasswordManagerChangePasswordTest {
         SecretKey unlocked = passwordManager.unlockVault(unlock);
         assertEquals("site.com", passwordManager.listEntries(unlocked, "").get(0).getSite());
 
-        PasswordManager.wipe(current);
         PasswordManager.wipe(updated);
         PasswordManager.wipe(unlock);
     }
 
     @Test
-    void changeMasterPassword_rejectsWrongCurrentPassword() {
-        char[] wrong = "wrong".toCharArray();
+    void changeMasterPassword_requiresActiveSessionKey() {
         char[] updated = "new-password".toCharArray();
 
         assertThrows(PasswordManager.VaultException.class,
-                () -> passwordManager.changeMasterPassword(wrong, updated, key));
+                () -> passwordManager.changeMasterPassword(updated, null));
 
-        PasswordManager.wipe(wrong);
         PasswordManager.wipe(updated);
     }
 

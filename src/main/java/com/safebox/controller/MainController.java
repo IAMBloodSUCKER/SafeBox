@@ -324,17 +324,15 @@ public class MainController {
             return;
         }
         ChangePasswordDialogController controller = dialog.get();
-        char[] current = controller.getCurrentPassword();
         char[] newPassword = controller.getNewPassword();
         try {
             SecretKey oldKey = app.getSessionManager().getEncryptionKey();
-            SecretKey newKey = app.getPasswordManager().changeMasterPassword(current, newPassword, oldKey);
+            SecretKey newKey = app.getPasswordManager().changeMasterPassword(newPassword, oldKey);
             app.getSessionManager().rotateKey(newKey, newPassword);
             showToast(I18n.get("changePassword.done"));
         } catch (Exception e) {
             showError(e.getMessage());
         } finally {
-            PasswordManager.wipe(current);
             PasswordManager.wipe(newPassword);
         }
     }
