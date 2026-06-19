@@ -234,7 +234,7 @@ FXML: `src/main/resources/fxml/dialogs/`. Стили: `dialogs.css` + тема.
 | `isFirstRun()` | Нет `salt.bin` или пустая БД |
 | `setupVault(password)` | Создание хранилища |
 | `unlockVault(password)` | Вход, возврат ключа |
-| `changeMasterPassword(current, new, key)` | Смена пароля + перешифровка |
+| `changeMasterPassword(new, key)` | Смена пароля + перешифровка (требует активную сессию) |
 | `listEntries(key, filter)` | Список с расшифровкой |
 | `saveEntry(entry, key)` | Insert / update |
 | `deleteEntry(id)` | Удаление одной |
