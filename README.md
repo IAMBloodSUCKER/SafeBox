@@ -1,6 +1,22 @@
 # SafeBox
 
-[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/IAMBloodSUCKER/SafeBox/releases)
+<p align="center">
+  <img src="src/main/resources/images/safeBoxGif.gif" alt="SafeBox — демонстрация" width="720">
+</p>
+
+<p align="center">
+  <strong style="font-size: 1.25em;">v1.0.2</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/IAMBloodSUCKER/SafeBox/releases/download/v1.0.2/SafeBox-1.0.2.exe">
+    <img src="https://img.shields.io/badge/Download-SafeBox%20for%20Windows-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Download SafeBox for Windows">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/IAMBloodSUCKER/SafeBox/releases">Все версии</a>
+</p>
 
 **SafeBox** — минималистичное десктопное приложение для безопасного локального хранения паролей. Без облаков, без серверов, один мастер-пароль.
 
@@ -18,9 +34,7 @@
 
 ## Установка
 
-1. Откройте [Releases](https://github.com/IAMBloodSUCKER/SafeBox/releases).
-2. Скачайте последний `SafeBox-*.exe`.
-3. Запустите установщик.
+Нажмите **Download** выше или скачайте последний `SafeBox-*.exe` в [Releases](https://github.com/IAMBloodSUCKER/SafeBox/releases) и запустите установщик.
 
 ## Безопасность
 
